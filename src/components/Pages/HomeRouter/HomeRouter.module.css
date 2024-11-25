@@ -1,0 +1,109 @@
+.Navbar {
+    color: white;
+    /* background-color: rgb(81 89 163 / 30%); */
+    cursor: pointer;
+    background-image: url('../../img/bgRouter.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 20% 90%;
+}
+
+.Navbar_header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+    line-height: 50px;
+
+}
+
+.local_1 p:hover{
+    color: #1ba0e2;
+}
+
+
+
+.Navbar_mid {
+    border-top: 1px solid #5b5a5a;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Reverse {
+    transform: scaleX(-1);
+    font-size: 20px;
+}
+
+.Dropdown_Tour2{
+    transition: opacity 0.3s ease-in-out;
+}
+
+.Dropdown_Tour2:hover .dropdown,
+.dropdown:hover {
+    display: flex;
+    opacity: 1;
+}
+
+.dropdown {
+    padding: 5px 10px;
+    position: absolute;
+    background-color: white;
+    color: black;
+    width: 915px;
+    display: none;
+    text-align: left;
+    justify-content: space-around;
+    top: 42px;
+    left: -6px;
+    border-radius: 5px;
+    height: 120px;
+    transition: height 1s ease-in-out;
+}
+
+.Dropdown_Tour {
+    font-size: 16px;
+    z-index: 99;
+}
+
+.Img_Logo {
+    width: 210px;
+}
+
+.Img_Logo img {
+    max-width: 100%;
+}
+
+.Reverse {
+    transform: scaleX(-1);
+}
+
+.Form_Price {
+    max-width: 254px;
+    height: 128px;
+    overflow: auto;
+}
+
+.Form_Price::-webkit-scrollbar {
+    width: 8px;
+}
+
+.Form_Price::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.Form_Price::-webkit-scrollbar-thumb {
+    background-color: #1ba0e2;
+    border-radius: 6px;
+}
+
+.Form_Price::-webkit-scrollbar-thumb:hover {
+    background-color: #1ba0e2;
+}
+
+.FormBorder{
+    border: 2px solid #1ba0e2;
+    padding: 15px;
+    border-radius: 10px;
+    background: ghostwhite;
+    margin-top: 10px;
+}

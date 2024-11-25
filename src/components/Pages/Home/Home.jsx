@@ -1,0 +1,613 @@
+import React, { useState } from "react";
+import { Button, Carousel, Dropdown, Space } from "antd";
+import style from "./Navbar.module.css";
+import {
+  LoginOutlined,
+  LogoutOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  SearchOutlined,
+  UserAddOutlined,
+} from "@ant-design/icons";
+import { Route, Routes, Link, Outlet } from "react-router-dom";
+import imageUrl from "../../img/logo.webp";
+
+//Cách dùng chung className
+// className={`${style.ButtonClick} ${selectedButton === 'a' ? 'selected' : ''} common-button`}
+
+import imageUrl1 from "../../img/banner1.jpg";
+import imageUrl2 from "../../img/banner2.jpg";
+import imageUrl3 from "../../img/banner3.jpg";
+import imageUrl4 from "../../img/banner4.jpg";
+import imageUrl5 from "../../img/banner5.jpg";
+import imageUrl6 from "../../img/banner6.jpg";
+
+import BgCF1 from "../../img/background_img1.webp";
+import BgCF2 from "../../img/bg2.webp";
+import BgCF3 from "../../img/bg3.webp";
+import BgCF4 from "../../img/bg4.webp";
+import BgCF5 from "../../img/bg5.webp";
+
+import Search from "antd/es/input/Search";
+import Card from "../Home/Card";
+import CardFavorite from "./CardFavorite";
+import Footer from "../../Footer/Footer";
+import CartList from "./ListCard";
+import ListCart2 from "./ListCard2";
+
+import ChauA from "./Asia/Asia";
+import ChauAu from "./Europe/Europe";
+import ChauMy from "./Americas/Americas";
+import ChauUc from "./Australia/Australia";
+import "animate.css";
+
+import Bac from "../../VietNam/Bac/Bac";
+import Nam from "../../VietNam/Nam/Nam";
+import Trung from "../../VietNam/Trung/Trung";
+
+const Home = () => {
+  const items = [
+    {
+      key: "1",
+      label: <Link to="/TourAsia">Du lịch Châu Á</Link>,
+    },
+    {
+      key: "2",
+      label: <Link to="/TourEurope">Du lịch Châu Âu</Link>,
+    },
+    {
+      key: "3",
+      label: <Link to="/TourAutralia">Du lịch Châu Úc</Link>,
+    },
+    {
+      key: "4",
+      label: <Link to="/TourAmericars">Du lịch Châu Mỹ</Link>,
+    },
+  ];
+
+  //Component Content3
+
+  const Component1 = () => {
+    return (
+      <div>
+        <ChauA />
+      </div>
+    );
+  };
+
+  const Component2 = () => {
+    return (
+      <div>
+        <ChauAu />
+      </div>
+    );
+  };
+
+  const Component3 = () => {
+    return (
+      <div>
+        <ChauUc />
+      </div>
+    );
+  };
+
+  const Component4 = () => {
+    return (
+      <div>
+        <ChauMy />
+      </div>
+    );
+  };
+
+  const [currentComponentCart, setcurrentComponentCart] = useState(Component1);
+
+  const [isActive, setIsActive] = useState("Asia");
+  const handleButtonClick = (component, prams) => {
+    setcurrentComponentCart(component);
+    setIsActive(prams);
+  };
+
+  //Component content 2
+  const Component5 = () => {
+    return (
+      <div>
+        <Bac />
+      </div>
+    );
+  };
+
+  const Component6 = () => {
+    return (
+      <div>
+        <Nam />
+      </div>
+    );
+  };
+
+  const Component7 = () => {
+    return (
+      <div>
+        <Trung />
+      </div>
+    );
+  };
+  //Active
+  const [Active, setActive] = useState("MienBac");
+  const [currentComponentDomestic, setcurrentComponentDomestic] =
+    useState(Component5);
+  const handleButtonNext = (component, prams) => {
+    setcurrentComponentDomestic(component);
+    setActive(prams);
+  };
+
+  
+
+  return (
+    <div >
+      <div style={{ position: "relative" }}>
+        <Carousel
+          style={{ cursor: "pointer", position: "relative" }}
+          dots
+          autoplay
+          autoplaySpeed={3000}
+          draggable
+        >
+          <div>
+            <img
+              style={{ maxWidth: "100%" }}
+              src="https://tindep.com/wp-content/uploads/2019/10/hinh-nen-1920-1080.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              style={{ maxWidth: "100%" }}
+              src="https://tophinhanhdep.com/wp-content/uploads/2021/10/HD-Mountain-Wallpapers.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              style={{ maxWidth: "100%" }}
+              src="https://tindep.com/wp-content/uploads/2019/10/hinh-nen-1920-1080-2.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              style={{ maxWidth: "100%" }}
+              src="https://img1.kienthucvui.vn/uploads/2022/01/15/hinh-anh-thien-nhien-can-nha-go-giua-con-song_094858391.jpg"
+              alt=""
+            />
+          </div>
+        </Carousel>
+
+        <div className={style.Navbar}>
+          <div className={style.Navbar_header}>
+            <div>
+              <PhoneOutlined className={style.Reverse} />
+              <span>0378936624</span>
+              <MailOutlined style={{ marginLeft: "30px" }} />
+              <span>nguyennghiep1320@gmail.com</span>
+            </div>
+
+            <div>
+              <LoginOutlined /> <span>Đăng nhập</span>
+              <UserAddOutlined style={{ marginLeft: "30px" }} />
+              <span>Đăng ký</span>
+            </div>
+          </div>
+
+          <div className={style.Navbar_mid}>
+            <div style={{ width: "175px" }}>
+              <img style={{ maxWidth: "100%" }} src={imageUrl} alt="logo" />
+            </div>
+
+            <div>
+              <Search
+                placeholder="Tìm kiếm tại đây..."
+                allowClear
+                bordered={true}
+                // enterButton={<button style={{ border: 'none' }}>search</button>}
+                enterButton={
+                  <Button
+                    type="submit"
+                    style={{
+                      border: "none",
+                      backgroundColor: "transparent",
+                      height: "38px",
+                    }}
+                  >
+                    <SearchOutlined style={{ fontSize: "18px" }} />
+                  </Button>
+                }
+                style={{
+                  width: "420px",
+                  marginLeft: "-20px",
+                  border: "none",
+                  height: "35px",
+                  backgroundColor: "transparent",
+                }}
+              />
+            </div>
+
+            <div>
+              <PhoneOutlined
+                style={{
+                  border: "2px solid yellow",
+                  borderRadius: "50%",
+                  padding: "10px",
+                  background: "#91caff",
+                  marginRight: "10px",
+                }}
+                className={style.Reverse}
+              />
+              <span>0378936624</span>
+            </div>
+          </div>
+
+          <div className={style.Navbar_bottom}>
+            <ul
+              style={{
+                listStyleType: "none",
+                display: "flex",
+                lineHeight: "50px",
+                justifyContent: "space-around",
+                backgroundColor: "#00000033",
+              }}
+            >
+              <li style={{ width: "300px", textAlign: "center" }}>Trang chủ</li>
+              <Link to="/Contact">
+                <li
+                  style={{
+                    width: "300px",
+                    textAlign: "center",
+                    borderLeft: "2px solid gray",
+                    borderRight: "2px solid gray",
+                  }}
+                >
+                  Giới thiệu
+                </li>
+              </Link>
+              <li
+                className={style.Dropdown_Tour2}
+                style={{
+                  width: "300px",
+                  textAlign: "center",
+                  position: "relative",
+                }}
+              >
+                <Button className={style.Dropdown_Tour}>
+                  Tour trong nước
+                  <div className={style.dropdown}>
+                    <div className={style.local_1}>
+                      <b>MIỀN BẮC</b>
+                      <p><Link to="/Hanoi">Du lịch Hà Nội</Link></p>
+                      <p>Du lịch Hạ Long</p>
+                      <p>Du lịch Hải Phòng</p>
+                    </div>
+
+                    <div className={style.local_1}>
+                      <b>MIỀN TRUNG</b>
+                      <p>Du lịch Quảng Bình</p>
+                      <p>Du lịch Huế</p>
+                      <p>Du lịch Đà Nẵng</p>
+                    </div>
+
+                    <div className={style.local_1}>
+                      <b>MIỀN NAM</b>
+                      <p>Du lịch Phú Quốc</p>
+                      <p>Du lịch Côn Đảo</p>
+                      <p>Du lịch Vũng Tàu</p>
+                    </div>
+                  </div>
+                </Button>
+              </li>
+              <Link to="/TourOut">
+                <li
+                  style={{
+                    width: "300px",
+                    textAlign: "center",
+                    borderLeft: "2px solid gray",
+                    borderRight: "2px solid gray",
+                  }}
+                >
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}
+                    placement="bottomLeft"
+                  >
+                    <Button style={{ fontSize: "16px" }}>
+                      Tour nước ngoài
+                    </Button>
+                  </Dropdown>
+                </li>
+              </Link>
+              <Link to="/Contact">
+                <li style={{ width: "300px", textAlign: "center" }}>Liên hệ</li>
+              </Link>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className={style.Content}>
+        <div className={style.Content_header}>
+          <h1>
+            Tour <span style={{ color: "#1ba0e2" }}>Mới Nhất</span>
+          </h1>
+          <div>
+            <div className={style.tl_1}></div>
+            <div className={style.tl_2}></div>
+            <div className={style.tl_1}></div>
+          </div>
+          <p>
+            Hệ thống đặt Tour hàng đầu Việt Nam. Hơn 300 tours du lịch ở Việt
+            Nam và Quốc tế
+          </p>
+        </div>
+
+        <div className={style.Card_title}>
+          <CartList />
+        </div>
+      </div>
+
+      <div className={style.Content_2}>
+        <div className={style.Content_header}>
+          <h1>
+            Tour <span style={{ color: "#1ba0e2" }}>Trong Nước</span>
+          </h1>
+          <div>
+            <div className={style.tl_1}></div>
+            <div className={style.tl_2}></div>
+            <div className={style.tl_1}></div>
+          </div>
+          <p>
+            Tour du lịch Trong nước tại Ant Du lịch. Hành hương đầu xuân - Tận
+            hưởng bản sắc Việt.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              fontSize: "18px",
+              marginTop: "20px",
+            }}
+          >
+            {/* selected là một đối tượng class */}
+            <button
+              className={`${style.ButtonClick} ${
+                Active === "MienBac" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonNext(<Component5 />, "MienBac")}
+            >
+              Miền Bắc
+            </button>
+            <button
+              style={{ margin: "0 20px" }}
+              className={`${style.ButtonClick} ${
+                Active === "MienTrung" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonNext(<Component7 />, "MienTrung")}
+            >
+              Miền Trung
+            </button>
+            <button
+              className={`${style.ButtonClick} ${
+                Active === "MienNam" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonNext(<Component6 />, "MienNam")}
+            >
+              Miền Nam
+            </button>
+          </div>
+        </div>
+
+        <div className={style.Card_title_2}>{currentComponentDomestic}</div>
+      </div>
+
+      <div className={style.Content_3}>
+        <div className={style.Content_header}>
+          <h1>
+            Tour <span style={{ color: "#1ba0e2" }}>Nước Ngoài</span>
+          </h1>
+          <div>
+            <div className={style.tl_1}></div>
+            <div className={style.tl_2}></div>
+            <div className={style.tl_1}></div>
+          </div>
+          <p>
+            Tour du lịch Nước ngoài tại Ant Du lịch. Du lịch 5 châu - Trải
+            nghiệm sắc xuân thế giới
+          </p>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              fontSize: "18px",
+              marginTop: "20px",
+            }}
+          >
+            <button
+              className={`${style.ButtonClick} ${
+                isActive === "Asia" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component1 />, "Asia")}
+            >
+              Du lịch Châu Á
+            </button>
+            <button
+              style={{ margin: "0 20px" }}
+              className={`${style.ButtonClick} ${
+                isActive === "Europe" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component2 />, "Europe")}
+            >
+              Du lịch Châu Âu
+            </button>
+            <button
+              style={{ marginRight: "20px" }}
+              className={`${style.ButtonClick} ${
+                isActive === "Australia" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component3 />, "Australia")}
+            >
+              Du lịch Châu Úc
+            </button>
+            <button
+              className={`${style.ButtonClick} ${
+                isActive === "Americas" ? "selected" : ""
+              }`}
+              onClick={() => handleButtonClick(<Component4 />, "Americas")}
+            >
+              Du lịch Châu Mỹ
+            </button>
+          </div>
+        </div>
+
+        <div className={style.Card_title_2}>{currentComponentCart}</div>
+      </div>
+
+      <div className={style.Content_5}>
+        <div className={style.Content_header}>
+          <h1>
+            <span style={{ color: "#1ba0e2" }}>Cẩm Nang Du Lịch</span>
+          </h1>
+          <div>
+            <div className={style.tl_1}></div>
+            <div className={style.tl_2}></div>
+            <div className={style.tl_1}></div>
+          </div>
+          <p>
+            Cẩm nang thông tin về du lịch, văn hóa, ẩm thực, các sự kiện và lễ
+            hội tại các điểm đến Việt nam, Đông Nam Á và Thế Giới.
+          </p>
+        </div>
+
+        <div className={style.Content_5_Text_Img}>
+          <div className={style.Content_5_Left}>
+            <div className={style.Content_5_Left_Img}>
+              <img
+                src="https://bizweb.dktcdn.net/thumb/grande/100/299/077/articles/chua-huong.jpg?v=1520693664270"
+                alt=""
+              />
+            </div>
+
+            <div style={{ width: "600px", textAlign: "justify" }}>
+              <b>Xiêu lòng với những cảnh đẹp nên thơ ở chùa Hương</b>
+              <p>
+                Vậy ở chùa Hương có gì thú vị mà lại thu hút nhiều du khách
+                trong lẫn ngoài nước đến như vậy, chúng ta hãy cùng tìm hiểu xem
+                nhé. Chùa Hương hay tên gọi đầy đủ là chùa Hương Sơn, là một
+                quần thể di tích thắng cảnh với rất nhiều ngôi chùa, đền, đình,
+                bao quanh là non nước hùng vĩ và hoang sơ. Cảnh vật ở nơi đây
+                nên thơ đến lạ,...
+              </p>
+            </div>
+          </div>
+
+          <div className={style.Content_5_Right}>
+            <div>
+              <div className={style.List1}>
+                <div className={style.List1_left}>
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className={style.List1_right}>
+                  <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
+                </div>
+              </div>
+
+              <div className={style.List1}>
+                <div className={style.List1_left}>
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className={style.List1_right}>
+                  <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
+                </div>
+              </div>
+
+              <div className={style.List1}>
+                <div className={style.List1_left}>
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className={style.List1_right}>
+                  <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
+                </div>
+              </div>
+
+              <div className={style.List1}>
+                <div className={style.List1_left}>
+                  <img
+                    src="https://tourvip.vn/assets/uploads/images/c1.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className={style.List1_right}>
+                  <b>Tràng An cổ - điểm đến đang hot ở Ninh Bình</b>
+                  <p>
+                    Ở Tràng An có hai địa danh là Tràng An và Tràng An cổ. Trong
+                    đó, Tràng An, nơi thu hút hàng nghìn lượt khách du xuân mỗi
+                    ngày
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={style.Content_4}>
+        <div className={style.Content_header}>
+          <h1>
+            Điểm đến <span style={{ color: "#1ba0e2" }}>Ưu Thích</span>
+          </h1>
+          <div>
+            <div className={style.tl_1}></div>
+            <div className={style.tl_2}></div>
+            <div className={style.tl_1}></div>
+          </div>
+          <p>
+            Những địa điểm du lịch hot nhất dịp Tết ở Việt Nam. Tham khảo những
+            điểm du lịch đặc sắc nhất từ Bắc tới Nam cùng với chúng tôi.
+          </p>
+        </div>
+
+        <div className={style.Card_favorite}>
+          <CardFavorite SrcImg={BgCF1} title="Phú Quốc" />
+          <CardFavorite SrcImg={BgCF2} title="Châu Á" />
+          <CardFavorite SrcImg={BgCF2} title="Châu Âu" />
+          <CardFavorite SrcImg={BgCF4} title="Châu Mỹ" />
+          <CardFavorite SrcImg={BgCF5} title="Châu Phi" />
+        </div>
+
+        <Footer />
+      </div>
+    </div>
+  );
+};
+export default Home;
